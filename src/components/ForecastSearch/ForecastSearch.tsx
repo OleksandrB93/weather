@@ -4,8 +4,11 @@ import {
   useState,
   useEffect,
 } from 'react';
-import { fetchForecast } from '../api/api';
-import { optionType } from '../types';
+import {
+  fetchForecast,
+  fetchCurrentForecast,
+} from '../api/api';
+import { IOptionType } from '../types';
 import { v4 as uuidv4 } from 'uuid';
 
 export const ForecastSearch = () => {
@@ -20,17 +23,14 @@ export const ForecastSearch = () => {
     e.preventDefault();
   };
 
-  const onOptionSelect = (option: optionType) => {
-    console.log(option.name);
-  };
-
   useEffect(() => {
-    if (!term /*|| term.length<3*/) return;
+    if (!term) return;
 
     async function renderFetchForecast() {
       try {
         const forecastResp = await fetchForecast(term);
         setOptions(forecastResp);
+
       } catch (error: any) {
         console.log(error.message);
       }
@@ -47,12 +47,12 @@ export const ForecastSearch = () => {
         onChange={onChange}
       />
       <ul className="absolute top-9 bg-white ml-1 rounded-b-md">
-        {options.map((option: optionType) => (
+        {options.map((option: IOptionType) => (
           <li key={uuidv4()}>
             <button
               className="text-left text-sm w-full hover:bg-zinc-700
                 hover:text-white px-2 py-1 cursor-pointer"
-              onClick={() => onOptionSelect(option)}
+              onClick={() => fetchCurrentForecast(option)}
             >
               {option.name}
             </button>

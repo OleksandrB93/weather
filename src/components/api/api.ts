@@ -18,10 +18,9 @@ export const fetchForecast = async (term: string) => {
   return data;
 };
 
-export const fetchCurrentForecast = async (option: any) => {
+export const fetchCurrentForecast = async ({lat,lon}: any) => {
   const { data } = await axios.get(
-    `/data/2.5/weather?lat=${option.lat}&lon=${option.lon}&appid=${API_KEY}`
+    `/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
   );
-  console.log(data);
   return data;
 };

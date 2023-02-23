@@ -1,5 +1,5 @@
 import { FormEvent, ChangeEvent, useState, useEffect } from 'react';
-import { IOptionType,forecastType } from '../components/types';
+import { IOptionType, forecastType } from '../components/types';
 import { fetchForecast } from '../components/api/api';
 
 const API_KEY: any = process.env.REACT_APP_API_KEY;
@@ -37,10 +37,16 @@ const useForecast = () => {
 
   const getForecast = (city: IOptionType) => {
     fetch(
-      `${BASE_URL}/data/2.5/weather?lat=${city.lat}&lon=${city.lon}&units=metric&appid=${API_KEY}`
+      `${BASE_URL}/data/2.5/forecast?lat=${city.lat}&lon=${city.lon}&units=metric&appid=${API_KEY}`
     )
       .then(res => res.json())
-      .then(data => setForecast(data));
+      .then(data => {
+        const forecastData = {
+          ...data.city,
+          list: data.list.slice(0, 16),
+        };
+        setForecast(forecastData);
+      });
   };
 
   const onSubmit = () => {

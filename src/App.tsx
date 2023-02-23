@@ -3,6 +3,8 @@ import './App.css';
 import { Header } from './components/Header/Header';
 import { Description } from './components/Description/Description';
 import { ForecastSearch } from './components/ForecastSearch/ForecastSearch';
+import { Forecast } from './components/icons/Forecast'
+
 
 const App = (): JSX.Element => {
   const {
@@ -23,12 +25,12 @@ const App = (): JSX.Element => {
       <section
         className="w-full md:max-w-[600px] p-4 flex flex-col text-center 
         items-center justify-center md:px-10 lg:p-24 h-full lg:h[500px]
-        bg-white bg-opacity-20 backdrop-blur-ls rounded drop-shadow-lg text-zinc-700"
+        bg-white bg-opacity-10 backdrop-blur-ls rounded drop-shadow-lg text-zinc-700"
       >
         <Header />
-        <Description />
+        {!forecast && <Description />}
         {forecast ? (
-          `we have a forecast`
+          <Forecast data={forecast}/>
         ) : (
           <div>
             <div className="flex flex-col">

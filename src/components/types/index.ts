@@ -3,3 +3,8 @@ export interface IOptionType {
   lat: number;
   lon: number;
 };
+
+
+export type forecastType = {
+  
+}

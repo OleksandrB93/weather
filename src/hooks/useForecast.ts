@@ -1,5 +1,5 @@
 import { FormEvent, ChangeEvent, useState, useEffect } from 'react';
-import { IOptionType } from '../components/types';
+import { IOptionType,forecastType } from '../components/types';
 import { fetchForecast } from '../components/api/api';
 
 const API_KEY: any = process.env.REACT_APP_API_KEY;
@@ -9,7 +9,7 @@ const useForecast = () => {
   const [term, setTerm] = useState<string>('');
   const [city, setCity] = useState<IOptionType | null>(null);
   const [options, setOptions] = useState<[]>([]);
-  const [forecast, setForecast] = useState<null>(null);
+  const [forecast, setForecast] = useState<forecastType | null>(null);
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     const event = e.target.value.toLowerCase().trim();

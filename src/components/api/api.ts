@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 
-const API_KEY: any = process.env.REACT_APP_API_KEY;
+const API_KEY: any = 'eaaf6cfc0da3f9c25461c07466df8e0a';
 const BASE_URL: string = 'https://api.openweathermap.org';
 
 axios.defaults.baseURL = BASE_URL;
@@ -18,7 +18,7 @@ export const fetchForecast = async (term: string) => {
   return data;
 };
 
-export const fetchCurrentForecast = async ({lat,lon}: any) => {
+export const fetchCurrentForecast = async ({ lat, lon }: any) => {
   const { data } = await axios.get(
     `/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
   );

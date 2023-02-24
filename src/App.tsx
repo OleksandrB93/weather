@@ -17,21 +17,23 @@ const App = (): JSX.Element => {
   } = useForecast();
 
   return (
-    <main className="flex flex-col items-center bg-gradient-to-br from-sky-400 via-amber-600 to-amber-200 h-[100vh] w-full my-auto pt-8">
+    <main className="flex justify-center items-center bg-gradient-to-br from-sky-500 via-orange-500 to-amber-400 h-[100vh] w-full">
       {forecast ? (
         <Forecast data={forecast} />
       ) : (
-        <div className="flex flex-col items-center">
+        <div className="">
           <Header />
           <Description />
-          <ForecastSearch
-            term={term}
-            options={options}
-            onChange={onChange}
-            onFormSubmit={onFormSubmit}
-            onOptionalSelect={onOptionalSelect}
-            onSubmit={onSubmit}
-          />
+          <div>
+            <ForecastSearch
+              term={term}
+              options={options}
+              onChange={onChange}
+              onFormSubmit={onFormSubmit}
+              onOptionalSelect={onOptionalSelect}
+              onSubmit={onSubmit}
+            />
+          </div>
         </div>
       )}
     </main>

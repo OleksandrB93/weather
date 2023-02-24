@@ -19,14 +19,14 @@ const App = (): JSX.Element => {
 
   return (
     <main
-      className="flex justify-center items-center bg-gradient-to-br 
-      from-sky-400 via-rose-400 to-lime-400 h-[100vh] w-full"
+      className="flex flex-col items-center bg-gradient-to-br 
+      from-sky-400 via-rose-400 to-lime-400 h-[100vh] w-full my-auto pt-8"
     >
-      <section
+      {/* <section
         className="w-full md:max-w-[600px] p-4 flex flex-col text-center 
         items-center justify-center md:px-10 lg:p-24 h-full lg:h[500px]
         bg-white bg-opacity-10 backdrop-blur-ls rounded drop-shadow-lg text-zinc-700"
-      >
+      > */}
         <Header />
         {!forecast && <Description />}
         {forecast ? (
@@ -45,7 +45,7 @@ const App = (): JSX.Element => {
             </div>
           </div>
         )}
-      </section>
+      {/* </section> */}
     </main>
   );
 };

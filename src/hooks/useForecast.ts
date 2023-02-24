@@ -2,7 +2,7 @@ import { FormEvent, ChangeEvent, useState, useEffect } from 'react';
 import { IOptionType, forecastType } from '../components/types';
 import { fetchForecast } from '../components/api/api';
 
-const API_KEY: any = process.env.REACT_APP_API_KEY;
+const API_KEY: string = "eaaf6cfc0da3f9c25461c07466df8e0a";
 const BASE_URL: string = 'https://api.openweathermap.org';
 
 const useForecast = () => {

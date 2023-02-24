@@ -46,7 +46,7 @@ const useForecast = () => {
           list: data.list.slice(0, 16),
         };
         setForecast(forecastData);
-      });
+      }).catch(error=>console.log(error));
   };
 
   const onSubmit = () => {

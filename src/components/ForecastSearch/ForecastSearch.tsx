@@ -35,7 +35,7 @@ export const ForecastSearch = ({
                 hover:text-white px-2 py-1 cursor-pointer"
               onClick={() => onOptionalSelect(option)}
             >
-              {option.name}
+              {option.name}, {option.country}
             </button>
           </li>
         ))}
@@ -43,7 +43,7 @@ export const ForecastSearch = ({
       <button
         type="submit"
         className="rounded-r-md border-4 border-zinc-100 px-2 py-[2px]
-           hover:border-zinc-500 hover:text-zinc-500 text-zinc-100"
+           hover:border-zinc-500 hover:text-white text-zinc-100"
         onClick={onSubmit}
       >
         search

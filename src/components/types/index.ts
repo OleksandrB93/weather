@@ -1,5 +1,6 @@
 export interface IOptionType {
   name: string;
+  country: string;
   lat: number;
   lon: number;
 }

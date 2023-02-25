@@ -20,7 +20,7 @@ export const ForecastSearch = ({
   onSubmit,
 }: Props): JSX.Element => {
   return (
-    <form onSubmit={onFormSubmit} className="relative flex justify-center mt-10 md:mt-4">
+    <form onSubmit={onFormSubmit} className="relative flex justify-start mt-10 md:mt-4">
       <input
         type="text"
         value={term}

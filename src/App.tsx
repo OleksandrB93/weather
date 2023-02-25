@@ -21,10 +21,10 @@ const App = (): JSX.Element => {
       {forecast ? (
         <Forecast data={forecast} />
       ) : (
-        <div className="">
+        <div >
           <Header />
           <Description />
-          <div>
+          <div className="flex justify-center">
             <ForecastSearch
               term={term}
               options={options}

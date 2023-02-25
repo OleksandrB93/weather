@@ -1,7 +1,7 @@
 const Sunset = (): JSX.Element => (
     <svg
-      width="20"
-      height="20"
+      width="30"
+      height="30"
       viewBox="0 0 108 108"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"

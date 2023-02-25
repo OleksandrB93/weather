@@ -9,6 +9,19 @@ import { forecastType } from '../types';
 import Sunrise from './Sunrise';
 import Sunset from './Sunset';
 import { motion } from 'framer-motion';
+import SwiperCore, {
+  EffectCoverflow,
+  Pagination,
+  Autoplay,
+  Virtual,
+  Manipulation,
+} from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.min.css';
+import 'swiper/swiper.min.css';
+import { listVAriatns } from '../../helpers/motion';
+
+SwiperCore.use([EffectCoverflow, Pagination, Autoplay, Manipulation, Virtual]);
 
 type Props = {
   data: forecastType;
@@ -43,22 +56,50 @@ export const Forecast = ({ data }: Props): JSX.Element => {
           </p>
         </section>
 
-        <section className="flex overflow-x-scroll mt-4 pb-2 mb-5">
-          {data.list.map((item, i) => (
-            <div
-              className="inline-block text-center w-[50px] flex-shrink-0"
-              key={i}
-            >
-              <p>{i === 0 ? 'Now' : new Date(item.dt * 1000).getHours()}</p>
-              <img
-                alt={`weather-icon-${item.weather[0].description}`}
-                src={`http://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
-              />
-              <p>
-                <Degree temp={Math.round(item.main.temp)} />
-              </p>
+        <section className=" mt-4 pb-2 mb-5">
+          {
+            <div>
+              <Swiper
+                initialSlide={5}
+                spaceBetween={1}
+                slidesPerView={5}
+                grabCursor={true}
+                loop={true}
+                autoplay={{
+                  delay: 1000,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: true,
+                }}
+                speed={1000}
+                // lazy={true}
+              >
+                {data.list.map((item, i) => (
+                  <SwiperSlide
+                    className=" text-center w-[50px] flex-shrink-0"
+                    key={i}
+                  >
+                    <motion.div
+                      variants={listVAriatns}
+                      initial="hidden"
+                      animate="visible"
+                      custom={i}
+                    >
+                      <p>
+                        {i === 0 ? 'Now' : new Date(item.dt * 1000).getHours()}
+                      </p>
+                      <img
+                        alt={`weather-icon-${item.weather[0].description}`}
+                        src={`http://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
+                      />
+                      <p>
+                        <Degree temp={Math.round(item.main.temp)} />
+                      </p>
+                    </motion.div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
-          ))}
+          }
         </section>
 
         <section className="flex flex-wrap justify-between text-zinc-700">

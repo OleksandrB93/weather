@@ -1,8 +1,14 @@
-import { getHumidityValue, getSunTime, getPop, getVisibilityValue } from '../../helpers';
+import {
+  getHumidityValue,
+  getSunTime,
+  getPop,
+  getVisibilityValue,
+} from '../../helpers';
 import { Tile } from '../Tile';
 import { forecastType } from '../types';
 import Sunrise from './Sunrise';
 import Sunset from './Sunset';
+import { motion } from 'framer-motion';
 
 type Props = {
   data: forecastType;
@@ -56,20 +62,26 @@ export const Forecast = ({ data }: Props): JSX.Element => {
         </section>
 
         <section className="flex flex-wrap justify-between text-zinc-700">
-          <div
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
             className="w-[140px] text-xs font-bold flex flex-col items-center
            bg-white/30 backdrop-blur-ls rounded drop-shadow-lg py-4 mb-5"
           >
             <Sunrise />
             <span className="mt-2">{getSunTime(data.sunrise)}</span>
-          </div>
-          <div
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
             className="w-[140px] text-xs font-bold flex flex-col items-center
            bg-white/30 backdrop-blur-ls rounded drop-shadow-lg py-4 mb-5"
           >
             <Sunset />
             <span className="mt-2">{getSunTime(data.sunset)}</span>
-          </div>
+          </motion.div>
           <Tile
             icon="wind"
             title="Wind"

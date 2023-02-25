@@ -4,6 +4,7 @@ import Humidity from './icons/Humidity';
 import Pressure from './icons/Pressure';
 import Pop from './icons/Pop';
 import Visibility from './icons/Visibility';
+import { motion } from 'framer-motion';
 
 type Props = {
   icon: 'wind' | 'feels' | 'humidity' | 'visibility' | 'pressure' | 'pop';
@@ -29,7 +30,10 @@ export const Tile = ({
 }: Props): JSX.Element => {
   const Icon = icons[icon];
   return (
-    <article
+    <motion.article
+    initial={{ opacity: 0, scale: 0.5 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.5 }}
       className="w-[140px] h-[130px] text-zinc-700 bg-white/30 
     backdrop-blur-ls rounded drop-shadow-lg p-2 mb-5 flex flex-col justify-between"
     >
@@ -38,6 +42,6 @@ export const Tile = ({
       </div>
       <h3 className="mt-2 text-lg">{info}</h3>
       <p className="text-xs font-bold">{description}</p>
-    </article>
+    </motion.article>
   );
 };

@@ -19,7 +19,7 @@ import SwiperCore, {
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
-import { listVAriatns } from '../../helpers/motion';
+import { listVAriatns2 } from '../../helpers/motion';
 
 SwiperCore.use([EffectCoverflow, Pagination, Autoplay, Manipulation, Virtual]);
 
@@ -79,7 +79,7 @@ export const Forecast = ({ data }: Props): JSX.Element => {
                     key={i}
                   >
                     <motion.div
-                      variants={listVAriatns}
+                      variants={listVAriatns2}
                       initial="hidden"
                       animate="visible"
                       custom={i}

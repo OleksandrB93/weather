@@ -1,6 +1,8 @@
 import { FormEvent, ChangeEvent } from 'react';
 import { IOptionType } from '../types';
 import { v4 as uuidv4 } from 'uuid';
+import { listVAriatns } from '../../helpers/motion';
+import { motion } from 'framer-motion';
 
 type Props = {
   term: string;
@@ -19,8 +21,12 @@ export const ForecastSearch = ({
   onOptionalSelect,
   onSubmit,
 }: Props): JSX.Element => {
+
   return (
-    <form onSubmit={onFormSubmit} className="relative flex justify-start mt-10 md:mt-4">
+    <form
+      onSubmit={onFormSubmit}
+      className="relative flex justify-start mt-10 md:mt-4"
+    >
       <input
         type="text"
         value={term}
@@ -28,8 +34,14 @@ export const ForecastSearch = ({
         onChange={onChange}
       />
       <ul className="absolute top-9 bg-white ml-1 rounded-b-md">
-        {options.map((option: IOptionType) => (
-          <li key={uuidv4()}>
+        {options.map((option: IOptionType, i) => (
+          <motion.li
+            key={uuidv4()}
+            variants={listVAriatns}
+            initial="hidden"
+            animate="visible"
+            custom={i}
+          >
             <button
               className="text-left text-sm w-full hover:bg-zinc-700
                 hover:text-white px-2 py-1 cursor-pointer"
@@ -37,7 +49,7 @@ export const ForecastSearch = ({
             >
               {option.name}, {option.country}
             </button>
-          </li>
+          </motion.li>
         ))}
       </ul>
       <button
